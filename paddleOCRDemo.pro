@@ -31,7 +31,9 @@ INCLUDEPATH += E:/github/opencv/opencv/build/install/include \
     $$PADDLE_PATH/third_party/install/protobuf/include \
     $$PADDLE_PATH/third_party/install/xxhash/include
 
+#you may need to modify the version of opencv
 LIBS += -LE:/github/opencv/opencv/build/install/x64/vc15/lib/ -lopencv_core451  -lopencv_imgcodecs451 -lopencv_imgproc451
+
 LIBS += -L$$PADDLE_PATH/paddle/lib -lpaddle_fluid
 LIBS += -L$$PADDLE_PATH/third_party/install/glog/lib/glog.lib
 LIBS += -L$$PADDLE_PATH/third_party/install/mkldnn/lib -lmkldnn
