@@ -20,9 +20,9 @@ QMAKE_PRE_LINK += $(COPY_DIR) $$shell_path($$DEPEN) $$shell_path($$DES) \
     && $(COPY) $$shell_path($$PWD/config.txt) $$shell_path($$OUT_PWD/config.txt) \
     && $(COPY) $$shell_path($$PWD/ppocr_keys_v1.txt) $$shell_path($$OUT_PWD/ppocr_keys_v1.txt)
 
-PADDLE_PATH = E:/github/paddle/paddle_inference_install_dir/paddle_inference_install_dir/ #use your own path
+PADDLE_PATH = E:/github/paddle/paddle_inference_install_dir/paddle_inference_install_dir/ #use your own path of paddle_inference
 
-INCLUDEPATH += E:/github/opencv/opencv/build/install/include \
+INCLUDEPATH += E:/github/opencv/opencv/build/install/include \  #use your own path of opencv
     $$PADDLE_PATH/paddle/include \
     $$PADDLE_PATH/third_party/install/cryptopp/include \
     $$PADDLE_PATH/third_party/install/glog/include \
