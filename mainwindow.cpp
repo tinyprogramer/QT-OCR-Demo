@@ -1,8 +1,9 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include <QImage>
 #include <QFileDialog>
+#include <QDebug>
 
 #include <string>
 #include <vector>
@@ -62,7 +63,7 @@ void MainWindow::SetImage()
     m_label->resize(ui->widget->size());
     m_label->setPixmap(QPixmap::fromImage(QImage(m_imgPath).scaled(m_label->size(),Qt::KeepAspectRatio)));
     m_label->show();
-    cv::Mat srcimg = cv::imread(m_imgPath.toStdString(), cv::IMREAD_COLOR);
+    cv::Mat srcimg = cv::imread(m_imgPath.toLocal8Bit().constData(), cv::IMREAD_COLOR);
     std::vector<std::vector<std::vector<int>>> boxes;
     m_det->Run(srcimg, boxes);
     std::vector<std::string> res=m_rec->Run(boxes, srcimg, nullptr);
