@@ -1,4 +1,4 @@
-// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
+﻿// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <algorithm>
 
 #include "paddle/utility.h"
 
@@ -36,7 +37,7 @@ std::vector<std::string> Utility::ReadDict(const std::string &path) {
   return m_vec;
 }
 
-void Utility::VisualizeBboxes(
+cv::Mat Utility::VisualizeBboxes(
     const cv::Mat &srcimg,
     const std::vector<std::vector<std::vector<int>>> &boxes) {
   cv::Mat img_vis;
@@ -52,9 +53,10 @@ void Utility::VisualizeBboxes(
     cv::polylines(img_vis, ppt, npt, 1, 1, CV_RGB(0, 255, 0), 2, 8, 0);
   }
 
-  cv::imwrite("./ocr_vis.png", img_vis);
-  std::cout << "The detection visualized image saved in ./ocr_vis.png"
-            << std::endl;
+  return std::move(img_vis);
+  //cv::imwrite("./ocr_vis.png", img_vis);
+  //std::cout << "The detection visualized image saved in ./ocr_vis.png"
+            //<< std::endl;
 }
 
 } // namespace PaddleOCR

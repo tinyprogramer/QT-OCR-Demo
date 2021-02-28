@@ -1,4 +1,4 @@
-// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
+﻿// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,8 +68,10 @@ public:
   // Load Paddle inference model
   void LoadModel(const std::string &model_dir);
 
+  void SetVisualize(bool vis);
+
   // Run predictor
-  void Run(cv::Mat &img, std::vector<std::vector<std::vector<int>>> &boxes);
+  cv::Mat Run(cv::Mat &img, std::vector<std::vector<std::vector<int>>> &boxes);
 
 private:
   std::shared_ptr<Predictor> predictor_;

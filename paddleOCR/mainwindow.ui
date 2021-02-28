@@ -41,6 +41,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="checkBox_imgvis">
+        <property name="text">
+         <string>显示文本检测框</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

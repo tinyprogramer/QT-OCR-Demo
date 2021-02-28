@@ -1,4 +1,4 @@
-// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
+﻿// Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ void DBDetector::LoadModel(const std::string &model_dir) {
   this->predictor_ = CreatePredictor(config);
 }
 
-void DBDetector::Run(cv::Mat &img,
+cv::Mat DBDetector::Run(cv::Mat &img,
                      std::vector<std::vector<std::vector<int>>> &boxes) {
   float ratio_h{};
   float ratio_w{};
@@ -115,10 +115,16 @@ void DBDetector::Run(cv::Mat &img,
 
   boxes = post_processor_.FilterTagDetRes(boxes, ratio_h, ratio_w, srcimg);
 
-  //// visualization
-  //if (this->visualize_) {
-  //  Utility::VisualizeBboxes(srcimg, boxes);
-  //}
+  // visualization
+  if (this->visualize_) {
+    return Utility::VisualizeBboxes(srcimg, boxes);
+  }
+  return cv::Mat();
+}
+
+void DBDetector::SetVisualize(bool vis)
+{
+    this->visualize_=vis;
 }
 
 } // namespace PaddleOCR
